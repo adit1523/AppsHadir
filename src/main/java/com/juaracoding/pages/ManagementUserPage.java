@@ -7,7 +7,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
-import java.util.NoSuchElementException;
+
 
 public class ManagementUserPage {
     private WebDriver driver;
@@ -77,6 +77,13 @@ public class ManagementUserPage {
     @FindBy(xpath = "//h2[contains(text(),'Application error')]")
     private WebElement txtAppError;
 
+    @FindBy(xpath = "errorName")
+    List<WebElement> errorMessages;
+
+
+    public List<WebElement> getError(){
+        return errorMessages;
+    }
 
     public void setBtnManagement(){
         btnManagement.click();

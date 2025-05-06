@@ -1,12 +1,12 @@
 package com.juaracoding.Utils;
 
 public enum ScenarioTest {
-//    Management Unit Test Scenario
+    //    Management Unit Test Scenario
     T1("I Filter Unit Data"),
     T2("I reset unit after filter data"),
     T3("I added valid data unit"),
     T4("I added and did not fill in the data unit name"), //Negative Test
-    T5("I added and did not fill in the data lokasi tetap aturan cuti and unit kalender"),
+    T5("I added and did not fill in the data leave regulations and calender unit"),
     T6("I added a new shift"),
     T7("I added a new shift but no input shift name"),
     T8("I added additional work hours"),

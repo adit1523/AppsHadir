@@ -25,7 +25,7 @@ public class ManagementUnitTest {
         driver = Hooks.driver;
         extentTest = Hooks.extentTest;
     }
-//    Scenario Filter Data
+    //    Scenario Filter Data
     @Given("I am on the unit page")
     public void i_am_on_the_unit_page(){
         driver.get(Constants.URL);
@@ -81,7 +81,6 @@ public class ManagementUnitTest {
         String tableRowText = managementUnitPage.getTableRowText(1);
         System.out.println(tableRowText);
         Assert.assertNotNull(tableRowText,"The table displays all the data");
-//        Assert.assertEquals(managementUnitPage.getTxtTanggal(),"19 Nov 2024");
         extentTest.log(LogStatus.PASS,"I see all unit on page unit");
     }
 
@@ -126,25 +125,25 @@ public class ManagementUnitTest {
         managementUnitPage.setBtnBatal();
         extentTest.log(LogStatus.PASS,"I see message invalid added");
     }
-//    Scenario I added and did not fill in the data lokasi tetap aturan cuti and unit kalender
+    //    Scenario I added and did not fill in the data lokasi tetap aturan cuti and unit kalender
     @When("I click button add data unit invalid 2")
     public void i_click_button_add_data_unit_invalid_2(){
         managementUnitPage.setBtnTambah();
         extentTest.log(LogStatus.PASS,"I click button add data unit invalid 2");
     }
-    @And("Im not input lokasi tetap and unit kalender also aturan cuti")
-    public void im_not_input_lokasi_tetap_and_unit_kalender_also_aturan_cuti(){
+    @And("Im not input select calender unit and leave regulations")
+    public void im_not_input_select_calender_unit_and_leave_regulations(){
         Utils.delay(2);
         managementUnitPage.addUnit("Juara Coding","","","","");
-        extentTest.log(LogStatus.PASS,"Im not input lokasi tetap and unit kalender also aturan cuti");
+        extentTest.log(LogStatus.PASS,"Im not input select calender unit and leave regulations");
     }
-    @Then("I see message Berhasil Menambahkan Unit")
-    public void i_see_message_Berhasil_Menambahkan_Unit(){
+    @Then("I see message successfully added a unit")
+    public void i_see_message_successfully_added_a_unit(){
         Utils.delay(2);
         Assert.assertTrue(managementUnitPage.getErrorMessages().size() > 0 && managementUnitPage.getErrorMessages().get(0).isDisplayed(),
-                "BUG: Pesan error validasi tidak muncul padahal field mandatory kosong 'pilih unit kalender, lokasi absen tetap, aturan cuti");
+                "BUG: Pesan error validasi tidak muncul padahal field mandatory kosong 'pilih unit kalender, aturan cuti");
         System.out.println("Validasi field mandatory bekerja dengan benar (pesan error muncul)");
-        extentTest.log(LogStatus.PASS,"I see message Berhasil Menambahkan Unit");
+        extentTest.log(LogStatus.PASS,"I see message successfully added a unit");
     }
 
     //Scenario I added a new shift
@@ -226,11 +225,11 @@ public class ManagementUnitTest {
         managementUnitPage.setInputJamKerjaTambah();
         extentTest.log(LogStatus.PASS,"I input additional working hours");
     }
-    @Then("I see message Berhasil Menambah Type Detail Shift")
+    @Then("I see message Success added Type Detail Shift")
     public void i_see_message_Success_Added_Type_Detail_Shift(){
         Utils.delay(2);
         Assert.assertEquals(managementUnitPage.getTxtBerhasilTambahJamKerja(),"Berhasil Menambahkan Type Detail Shift");
-        extentTest.log(LogStatus.PASS,"I see message Berhasil Menambah Type Detail Shift");
+        extentTest.log(LogStatus.PASS,"I see message Success added Type Detail Shift");
     }
 
     //I added additional work hours but not input shifting
@@ -267,11 +266,11 @@ public class ManagementUnitTest {
         managementUnitPage.setBtnDelete();
         extentTest.log(LogStatus.PASS,"I click button delete additional work hours");
     }
-    @Then("I click button hapus")
-    public void i_click_button_hapus(){
+    @Then("I click button delete")
+    public void i_click_button_delete(){
         Utils.delay(2);
         managementUnitPage.setBtnHapus();
-        extentTest.log(LogStatus.PASS,"I click button hapus");
+        extentTest.log(LogStatus.PASS,"I click button delete");
     }
 
     //Scenario Im  not input virtual id
@@ -304,17 +303,17 @@ public class ManagementUnitTest {
 
     @And("I click button save")
     public void i_click_button_save(){
-        Utils.delay(2);
+        Utils.delay(5);
         managementUnitPage.setAtur();
         extentTest.log(LogStatus.PASS,"I click button atur");
     }
-    @Then("I see message Foto tidak boleh kosong")
-    public void I_see_message_foto_tidak_boleh_kosong(){
+    @Then("I see message photo cannot be empty")
+    public void I_see_message_photo_cannot_be_empty(){
         Utils.delay(2);
         Assert.assertEquals(managementUnitPage.getTxtInvalidFoto(),"Foto tidak boleh kosong");
         Utils.delay(2);
         managementUnitPage.setBtnBatalVirtualID();
-        extentTest.log(LogStatus.PASS,"I see message Foto tidak boleh kosong");
+        extentTest.log(LogStatus.PASS,"I see message photo cannot be empty");
     }
 
     //Scenario I uploaded a file that exceeds the capacity.
@@ -345,16 +344,16 @@ public class ManagementUnitTest {
     }
     @And("I click button submit")
     public void i_click_button_submit(){
-        Utils.delay(1);
+        Utils.delay(3);
         managementUnitPage.setAtur();
         extentTest.log(LogStatus.PASS,"I click button submit");
     }
-    @Then("I see message Foto tidak boleh kosong 2")
-    public void i_see_message_Foto_tidak_boleh_kosong_2(){
+    @Then("I see message photo cannot be empty 2")
+    public void i_see_message_photo_cannot_be_empty_2(){
         Utils.delay(2);
         Assert.assertEquals(managementUnitPage.getTxtInvalidFoto(),"Foto tidak boleh kosong");
         managementUnitPage.setBtnBatalVirtualID();
-        extentTest.log(LogStatus.PASS,"I see message Foto tidak boleh kosong 2");
+        extentTest.log(LogStatus.PASS,"I see message photo cannot be empty 2");
     }
 
     //Scenario I input virtual id valid
@@ -364,17 +363,17 @@ public class ManagementUnitTest {
         managementUnitPage.setbtnVirtual();
         extentTest.log(LogStatus.PASS,"I click button virtual");
     }
-    @And("I click button pilih foto")
-    public void i_click_button_pilih_foto(){
+    @And("I click button choose photo")
+    public void i_click_button_choose_photo(){
         Utils.delay(1);
         managementUnitPage.setVirtualId();
-        extentTest.log(LogStatus.PASS,"I click button pilih foto");
+        extentTest.log(LogStatus.PASS,"I click button choose photo");
     }
-    @And("I click button warna")
-    public void i_click_button_warna(){
+    @And("I click button colour")
+    public void i_click_button_colour(){
         Utils.delay(1);
         managementUnitPage.setBtnWarna();
-        extentTest.log(LogStatus.PASS,"I click button warna");
+        extentTest.log(LogStatus.PASS,"I click button colour");
     }
     @And("I choose colour")
     public void i_choose_colour(){
@@ -382,16 +381,16 @@ public class ManagementUnitTest {
         managementUnitPage.setDragAndDrop();
         extentTest.log(LogStatus.PASS,"I choose colour");
     }
-    @And("I click button atur")
-    public void i_click_button_atur(){
+    @And("I click set button")
+    public void i_click_set_button(){
         Utils.delay(2);
         managementUnitPage.setAtur();
-        extentTest.log(LogStatus.PASS,"I click button atur");
+        extentTest.log(LogStatus.PASS,"I click set button");
     }
-    @Then("I see message Berhasil Mengatur Virtual ID")
-    public void I_see_message_Berhasil_Mengatur_Virtual_ID(){
+    @Then("I see message Success Set Virtual ID")
+    public void I_see_message_success_set_Virtual_ID(){
         Utils.delay(2);
         Assert.assertEquals(managementUnitPage.getTxtVirtualSuccess(),"Berhasil Mengatur Virtual ID");
-        extentTest.log(LogStatus.PASS,"I see message Berhasil Mengatur Virtual ID");
+        extentTest.log(LogStatus.PASS,"I see message Success Set Virtual ID");
     }
 }
